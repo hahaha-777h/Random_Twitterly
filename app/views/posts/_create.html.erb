@@ -1,0 +1,19 @@
+<!-- 投稿フォーム -->
+<h2 class="mb-2 fs-5">投稿内容</h2>
+
+<%= form_with(model: @post, url: posts_path, local: true) do |f| %>
+<%= f.hidden_field :theme_id, value: @theme.id %>
+
+<div class="mb-3">
+    <%= f.text_area :content, class: "form-control", rows: 4 %>
+    <% if @post.errors[:content].any? %>
+    <div class="text-danger mt-1">
+        <%= @post.errors[:content].first %>
+    </div>
+    <% end %>
+</div>
+
+<div class="mb-3">
+    <%= f.submit "投稿する", class: "btn btn-primary" %>
+</div>
+<% end %>

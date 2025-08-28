@@ -1,0 +1,18 @@
+<header class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <%= link_to "Random Twitterly", root_path, class: "navbar-brand", id: "logo" %>
+</header>
+
+<div style="margin-top: 6rem;">
+    <% if @theme %>
+    <div class="d-flex align-items-center justify-content-between mb-3">
+        <h2 class="mb-0 "><%= @theme.title %></h2>
+        <%= link_to "テーマを変える", shuffle_path, class: "btn btn-outline-secondary" %>
+    </div>
+
+    <%= render "posts/create", post: @post, theme: @theme %>
+    <%= render "posts/index", posts: @posts %>
+    <% else %>
+    <p>お題がありません。</p>
+    <% end %>
+</div>
